@@ -1,0 +1,76 @@
+<%= javascript_include_tag "main", "data-turbo-track": "reload", defer: true %>
+<%= stylesheet_link_tag 'login' , media: 'all' , 'data-turbolinks-track' => 'reload' %>
+<%= stylesheet_link_tag 'main' , media: 'all' , 'data-turbolinks-track' => 'reload' %>
+
+
+<div id="particles-js"><h1>
+  <section>
+
+    <div class="container">
+      <div class="user signinBx">
+        <div class="imgBx">
+          <img src="https://free4kwallpapers.com/uploads/originals/2020/07/01/-astronaut-floating-space-wallpaper.jpg"
+          alt="signin img">
+        </div>
+        <div class="formBx">
+          <%= form_for(resource, as: resource_name, class:"loginform", url: session_path(resource_name)) do |f| %>
+          <h2>get started</h2>
+          <label>
+            <%= f.label :email, class: 'control-label' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:'form-control' %>
+          </label>
+          <label>
+            <%= f.label :password, class: 'control-label' %><br />
+            <%= f.password_field :password, autocomplete:"current-password", class:'form-control' %>
+          </label>
+          <%= f.submit "Log in" , class:'button' %>
+          <p class="signup">Dont have a account ? <a href="#" onclick="toggleForm();">Sign up!</a></p>
+        </form>
+      </div>
+    </div>
+    <% end %>
+    
+    <div class="user signupBx">
+      <div class="formBx">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <h2>create an account</h2>
+        <label>
+                <%= f.label :name %><br />
+                  <%= f.text_field :name, autocomplete: "name" , class: 'form-control' %>
+              </label>
+              <label>
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autocomplete: "email" , class: 'form-control' %>
+              </label>
+       
+              <label>
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                  </label>
+                  <label>
+                    <%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                  </label>
+                  <%= f.submit "Sign up" , class:'button' %>
+                  <p class="signup">Already have a account ? <a href="#" onclick="toggleForm();">sign in.</a></p>
+                </form>
+              </div>
+              <div class="imgBx">
+                <img src="https://wallpaperaccess.com/full/1455633.jpg" alt="signin img">
+              </div>
+              <% end %>
+            </div>
+    </div>
+  </section>
+
+</h1></div>
+  <script>
+    function toggleForm() {
+      var container = document.querySelector(".container");
+      container.classList.toggle("active");
+    }
+
+  </script>
